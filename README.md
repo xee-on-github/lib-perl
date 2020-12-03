@@ -1,26 +1,26 @@
 
-# Simple libraries
+# lib-perl
 
-## lib/Util/BaseObjectMoo.pm
+## Simple libraries
+
+### lib/Util/BaseObjectMoo.pm
 
 The purpose of this library is to simplify the reading of YAML configuration files and the writing of a log.
 
 
-## Classic structure of main script and directories
+### Classic structure of main script and directories
 
 ```
-.
-│ script.pl
+script.pl
 │
 └─config
 │   script.yaml
 │   
 └─log
 │   script.log
-
 ```
 
-## Requeriments
+### Requeriments
 Moo 
 Types::Standard 
 YAML::XS 

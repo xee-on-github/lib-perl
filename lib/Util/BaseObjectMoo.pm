@@ -34,17 +34,17 @@ has logger       => ( is => 'rw', lazy => 1, builder => '_build_logger',      is
 #-------------------------------------------------------------------------------------------------------------------
 # attributes init values
 #-------------------------------------------------------------------------------------------------------------------
-sub _build_base_name   { return substr ( __FILE__, 0, -3) . '.yaml' || ''  }
-sub _build_time_start  { return time();                                    }
-sub _build_file_config { return  'config/' . _build_base_name . '.yaml';   }
-sub _build_file_log    { return  'log/'    . _build_base_name . '.log';    }
-sub _build_logger      { return  Log::Tiny->new( _build_file_log  );       }
+sub _build_base_name   { return substr ( __FILE__, 0, -3) . '.yaml';      }
+sub _build_time_start  { return time();                                   }
+sub _build_file_config { return 'config/' . _build_base_name . '.yaml';   }
+sub _build_file_log    { return 'log/'    . _build_base_name . '.log';    }
+sub _build_logger      { return Log::Tiny->new( _build_file_log  ) || die "[BaseObjectMoo] can't instance Log::Tiny"; }
 
 #-------------------------------------------------------------------------------------------------------------------
 # constructor
 #-------------------------------------------------------------------------------------------------------------------
 # f* init_config: return 1 (true) or 0 (false) set reference(hash) but why to call it?
-#-------------------------------------------------------------------------------------------------------------------
+#---
 sub init_config  {
   my $self   = $_[0];
   my $return = 1;
