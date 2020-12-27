@@ -8,7 +8,7 @@
 # CHANGE HISTORY
 #-------------------------------------------------------------------------------------------------------------------
 # 20201213 - xee - clean up the unnecessary code
-package lib::Utils::BaseObjectMoo;
+package lib::Util::BaseObjectMoo;
 use Moo;
 use utf8;
 
