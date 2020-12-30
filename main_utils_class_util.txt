@@ -1,29 +1,35 @@
-class_file.... <: $_class_file_ :>
-class_name.... <: $_class_name_ :>
-class_pkg..... <: $_class_pkg_ :>
+[main_utils_class_util.pl][do_make] - inici
+--> ''
+--> ''
+class........ ok - 1 - value: Test
+attribut..... ok - 1 - value: name:Str:'',cognoms:Str:''
+[main_utils_class_util.pl][do_make_class_and_attributes] - inici
+class_file.... lib/Test/Test.pm
+class_name.... Test
+class_pkg..... lib::Test::Test
 
 
 attirbutes.....
 
-:# iterate hash key value another hash
-: for $_list_attributes_.keys() -> $key {
-    name....... <: $_list_attributes_[$key].name :>
-    type....... <: $_list_attributes_[$key].type  :>
-    init....... <: $_list_attributes_[$key].init  :>
-: } 
+    name....... cognoms
+    type....... Str
+    init....... ''
+    name....... name
+    type....... Str
+    init....... ''
 
 -----------------
 
 #-------------------------------------------------------------------------------------------------------------------
-# h: <: $_class_pkg_ :>
+# h: lib::Test::Test
 #-------------------------------------------------------------------------------------------------------------------
-# NAME................... <: $_class_name_ :>
+# NAME................... Test
 # CREATION DATE.......... ?????
 # AUTHOR................. ?????
 #-------------------------------------------------------------------------------------------------------------------
 # CHANGE HISTORY
 #-------------------------------------------------------------------------------------------------------------------
-package <: $_class_pkg_ :>;
+package lib::Test::Test;
 use Moo;
 use utf8;
 
@@ -38,9 +44,8 @@ use utf8;
 #-------------------------------------------------------------------------------------------------------------------
 # attributes
 #-------------------------------------------------------------------------------------------------------------------
-: for $_list_attributes_.keys() -> $key {
-has <: $_list_attributes_[$key].name :> => (  is => 'rw', lazy => 1, default => <: $_list_attributes_[$key].init :>, isa => <: $_list_attributes_[$key].type :> );
-: } 
+has cognoms => (  is => 'rw', lazy => 1, default => '', isa => Str );
+has name => (  is => 'rw', lazy => 1, default => '', isa => Str );
 
 #-------------------------------------------------------------------------------------------------------------------
 # f* builder
@@ -69,3 +74,5 @@ sub demolish  {
 
 
 
+[main_utils_class_util.pl][do_make_class_and_attributes] - final
+[main_utils_class_util.pl][do_make] - final

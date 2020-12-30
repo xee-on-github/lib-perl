@@ -26,13 +26,14 @@ use Getopt::Long qw(GetOptions);
 #----------------------------------------------------------------------------------------------------------
 
 # var
-my ( $class, $attribut, $parent_dir ) = ( '', '', '' );
+my ( $class, $attribut, $parent_dir, $class_default ) = ( '', '', '', 0 );
 
 # read argument
 GetOptions(
-  'class=s'      => \$class,
-  'attributes=s' => \$attribut,
-  'parent_dir=s' => \$parent_dir,
+  'class=s'         => \$class,
+  'attributes=s'    => \$attribut,
+  'parent_dir=i'    => \$parent_dir,
+  'class_default=i' => \$class_default,
 );
 
 # error class name is empty
@@ -41,9 +42,10 @@ GetOptions(
 
 # call main test
 my $pkg_class_util = lib::Util::UtilClass->new (
-  class      => $class,
-  attribut   => $attribut,
-  parent_dir => $parent_dir
+  class         => $class,
+  attribut      => $attribut,
+  parent_dir    => $parent_dir,
+  class_default => $class_default
 )->do_make;
 
 
@@ -56,8 +58,9 @@ my $pkg_class_util = lib::Util::UtilClass->new (
 #---
 sub msg_error {
   my $msg = $_[0] || '';
-  say "perl $0 --class <class_name> --attributes [<attrib_01:type:init_value>] --method [<method_01:arg_0:arg_01:arg_n>]
-  \nor\n./$0 --class <class_name> --attributes [<attrib_01:type:init_value>] --method [<method_01:arg_0:arg_01:arg_n>]";
+  say "perl $0 --class <class_name> --attributes [<attrib_01:type:init_value>] --method [<method_01:arg_0:arg_01:arg_n>] --class_default <1|0>
+  \nor\n./$0 --class <class_name> --attributes [<attrib_01:type:init_value>] --method [<method_01:arg_0:arg_01:arg_n>] --class_default <1|0>";
+
   say " *INFO* $msg" if $msg ne '';
   exit;
 }
